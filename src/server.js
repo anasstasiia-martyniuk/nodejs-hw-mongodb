@@ -31,11 +31,13 @@ export function setupServer() {
 
     app.get('/contacts', async (req, res) => {
       const contacts = await getAllContacts();
-
+      console.log(contacts);
+      
       res.status(200).json({
         status: 200,
         message: "Successfully found contacts!",
         data: contacts,
+        
       });
     });
 
