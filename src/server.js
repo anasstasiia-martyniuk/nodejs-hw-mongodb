@@ -10,6 +10,8 @@ export function setupServer() {
     const PORT = Number(getEnvVar('PORT', '3000'));
 
     const app = express();
+
+    app.use(express.json());
     
     app.use(
         pino({
@@ -29,6 +31,7 @@ export function setupServer() {
 
     app.get('/contacts', async (req, res) => {
       const contacts = await getAllContacts();
+
       res.status(200).json({
         status: 200,
         message: "Successfully found contacts!",
@@ -46,9 +49,10 @@ export function setupServer() {
         });
         return;
       }
+
       res.status(200).json({
         status: 200,
-      	message: "Successfully found contact with id {contactId}!",
+      	message: "Successfully found contact with id ${contactId}!",
         data: contact,
       });
     });
@@ -62,5 +66,4 @@ export function setupServer() {
     app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
     });
-
 };
