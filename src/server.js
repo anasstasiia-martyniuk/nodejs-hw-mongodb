@@ -21,14 +21,10 @@ export function setupServer() {
 
     app.use(cors());
 
-    app.use('*', (req, res, next) => {
-        res.status(404).json({
-          message: 'Not found',
-        });
+    app.get('/', (req, res) => {
+      res.json({
+        message: 'Hello World!',
       });
-    
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
     });
 
     app.get('/contacts', async (req, res) => {
@@ -42,7 +38,7 @@ export function setupServer() {
 
     app.get('/contacts/:contactId', async (req, res) => {
       const { contactId } = req.params;
-      const contact = await getContactById();
+      const contact = await getContactById(contactId);
 
       if(!contact) {
         res.status(404).json({
@@ -56,4 +52,15 @@ export function setupServer() {
         data: contact,
       });
     });
+
+    app.use('*', (req, res, next) => {
+      res.status(404).json({
+        message: 'Not found',
+      });
+    });
+  
+    app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+    });
+
 };
