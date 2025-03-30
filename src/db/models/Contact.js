@@ -21,11 +21,11 @@ const contactSchema = new Schema({
         enum: ["work", "home", "personal"],
         required: true,
         default: "personal",
-    }
+    },
 }, {
     timestamps: true,
 });
 
-const ContactCollection = model("contact", contactSchema);
+const ContactCollection = model("contacts", contactSchema);
 
 export default ContactCollection;
