@@ -5,7 +5,7 @@ import cors from 'cors';
 import { getEnvVar } from './utils/getEnvVar.js';
 import { getAllContacts, getContactById } from './services/contacts.js';
 
-export function setupServer() {
+export function setupServer() {      
 
     const PORT = Number(getEnvVar('PORT', '3000'));
 
