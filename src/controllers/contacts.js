@@ -10,7 +10,8 @@ export const getContactsController = async (req, res) => {
   const { isFavourite } = parseFilterParams(req.query);  
   const { _id: userId } = req.user;
   
-  const contacts = await getAllContacts({ userId,
+  const contacts = await getAllContacts({ 
+    userId,
     page,
     perPage,
     sortOrder,
@@ -22,7 +23,7 @@ export const getContactsController = async (req, res) => {
     res.json({
       status: 200,
       message: "Successfully found contacts!",
-      data: contacts,
+      data: contacts.data
     });
   };
 
