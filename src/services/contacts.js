@@ -7,13 +7,12 @@ export const getAllContacts = async ({ page = 1, perPage = 10, sortBy = "_id", s
   const data = await ContactCollection.find({ userId }).skip(skip).limit(perPage).sort({ [sortBy]: sortOrder });
   const totalItems = await ContactCollection.countDocuments({ userId });
 
-  const paginationData = calculatePaginationData({ page, perPage, totalItems });
+  const paginationData = calculatePaginationData( page, perPage, totalItems );
 
   return {
       data,
-      page,
-      perPage,
-      totalItems,
+      // page,
+      // perPage,
       ...paginationData,
   };
 };
