@@ -8,6 +8,7 @@ import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import router from './routers/contacts.js';
 import authRouter from "./routers/auth.js";
+import { UPLOAD_DIR } from "./constants/index.js";
 
 export function setupServer() {      
 
@@ -35,7 +36,10 @@ export function setupServer() {
       });
     });
 
+    app.use("/uploads", express.static(UPLOAD_DIR));
+
     app.use("/auth", authRouter);
+    
     app.use(router); 
    
     app.use('*', notFoundHandler);
