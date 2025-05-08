@@ -9,6 +9,7 @@ import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import router from './routers/contacts.js';
 import authRouter from "./routers/auth.js";
 import { UPLOAD_DIR } from "./constants/index.js";
+import { swaggerDocs } from './middlewares/swaggerDocs.js';
 
 export function setupServer() {      
 
@@ -39,6 +40,8 @@ export function setupServer() {
     app.use("/uploads", express.static(UPLOAD_DIR));
 
     app.use("/auth", authRouter);
+
+    app.use("/api-docs", swaggerDocs());
     
     app.use(router); 
    
