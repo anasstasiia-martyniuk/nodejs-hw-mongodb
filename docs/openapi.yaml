@@ -11,7 +11,7 @@ tags:
   - name: Contacts
     description: Operations about contacts.
 servers:
-  - url: https://nodejs-hw-mongodb-mig7.onrender.com/
+  - url: https://nodejs-hw-mongodb-mig7.onrender.com
   - url: http://localhost:3000
 paths:
   /contacts:
